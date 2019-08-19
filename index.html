@@ -26,8 +26,8 @@
                 int edgePos = 0; //variable for which edge we're at
 
                 //loop through every space in the matrix
-                for (int i = 0; i < Main.vertices; i++) {
-                    for (int j = 0; j < Main.vertices; j++) {
+                for (int i = 0; i &lt; Main.vertices; i++) {
+                    for (int j = 0; j &lt; Main.vertices; j++) {
                         //if its a zero, there is no edge connecting the corresponding vertices
                         if (matrix[i][j] == 0) {
                         } //if it's not a zero, there is an edge. 
@@ -52,8 +52,8 @@
             public static int lowestCost(boolean outside[], int weight[]) {
                 int inf = Integer.MAX_VALUE;
                 int smallest = -1;
-                for (int i = 0; i < matrix.length; i++) {
-                    if (weight[i] < inf && outside[i] == false) {
+                for (int i = 0; i &lt; matrix.length; i++) {
+                    if (weight[i] &lt; inf &amp;&amp; outside[i] == false) {
                         inf = weight[i];
                         smallest = i;
                     }
@@ -67,27 +67,27 @@
                 System.out.println("Floyd's Algorithm------------- ");  
                 int table[][] = new int[vertices][vertices];           //he wants all values to be infinity????
                 int i, j, k;
-                for (i = 0; i < vertices; i++)                      // start copy graph to the new table
+                for (i = 0; i &lt; vertices; i++)                      // start copy graph to the new table
                 {
-                    for (j = 0; j < vertices; j++)
+                    for (j = 0; j &lt; vertices; j++)
                     {
                         table[i][j] = graph[i][j];
                     }
                 }                                                   // end copy graph to the new table
-                for (k = 0; k < vertices; k++)                              // starting loop through the table
+                for (k = 0; k &lt; vertices; k++)                              // starting loop through the table
                 {
-                    for (i = 0; i < vertices; i++)
+                    for (i = 0; i &lt; vertices; i++)
                     {
-                        for (j = 0; j < vertices; j++)
+                        for (j = 0; j &lt; vertices; j++)
                         {
-                            if (table[i][k] + table[k][j] < table[i][j])        // check if distance is smaller    
+                            if (table[i][k] + table[k][j] &lt; table[i][j])        // check if distance is smaller    
                             {
                                 table[i][j] = table[i][k] + table[k][j];        // change it if distance is smaller
                                 System.out.println("");                         // start printing method
                                 System.out.println("Printing:");
-                                for (int a=0; a<vertices; ++a)
+                                for (int a=0; a&lt;vertices; ++a)
                                 {
-                                    for (int b=0; b<vertices; ++b)
+                                    for (int b=0; b&lt;vertices; ++b)
                                     {
                                         if (table[a][b]==INF)
                                         {
