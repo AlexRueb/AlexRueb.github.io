@@ -110,6 +110,62 @@
         </pre>
     </div>
     <h3>Prim's Algorithm</h3>
+    <p>*PURPOSE OF ALGORITHM*</p>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#prim">Click to See Code Example</button>
+    <div id="prim" class="collapse">
+        <pre>
+            <code>
+            public static void prim(int matrix[][]) {
+                System.out.println("Prim's Algorith-------------");
+                System.out.println("");
+                int nodes = matrix.length; //Number of vertices in graph
+                int inf = Integer.MAX_VALUE; //Easy wasy to represent infinity 
+
+                //Array for the MST 
+                int tree[] = new int[nodes];
+
+                //Set to help choose minimum weights 
+                int weight[] = new int[nodes];
+                //Set for all nodes not in the tree
+                boolean outside[] = new boolean[nodes];
+
+                //Set all the keys to inf and sets them to false to denote 
+                //that they're not in the tree yet
+                for (int i = 0; i &lt; nodes; i++) {
+                    outside[i] = false;
+                    weight[i] = inf;
+                }
+
+                //Makes the weight 0 so it gets selected first 
+                weight[0] = 0;
+
+                for (int j = 0; j &lt; nodes - 1; j++) {
+                    //Calls method below to put lowest cost into a variable 
+                    int lowest = lowestCost(outside, weight);
+
+                    //Put the selected node into the "outside" set 
+                    outside[lowest] = true;
+
+                    for (int k = 0; k &lt; nodes; k++) {
+                        if (matrix[lowest][k] &lt; weight[k] &amp;&amp; outside[k] == false &amp;&amp; matrix[lowest][k] != 0) {
+                            tree[k] = lowest;
+                            weight[k] = matrix[lowest][k];
+                        }
+                    }
+                }
+
+                //Prints the tree 
+                int totWeight = 0;
+                for (int i = 1; i &lt; matrix.length; i++) {
+                    char s =(char) (tree[i] + 66);
+                    char d =(char) (i + 66);
+                    System.out.print(s + "" + d + " ");
+                }
+                System.out.println("");
+            }
+            </code>
+        </pre>
+    </div>
     <h3>3</h3>
     <h3>4</h3>
     <h3>5</h3>
