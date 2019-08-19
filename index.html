@@ -12,8 +12,102 @@
 <h2>Coding examples</h2>
 
 <div class ="container">
-    <h3>1</h3>
-    <h3>2</h3>
+    <h3>Kruskals Algorithm</h3>
+    <p>*PURPOSE OF ALGORITHM*</p>
+    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#kruskal">Click to See Code Example</button>
+    <div id="kruskal" class="collapse">
+        <blockquote> 
+                public static void kruskal() {
+                System.out.println("");
+                System.out.println("Kruskal's Algorith-------------");
+                System.out.println("");
+                Graph graph = new Graph(); //creates the graph
+                int edgePos = 0; //variable for which edge we're at
+
+                //loop through every space in the matrix
+                for (int i = 0; i < Main.vertices; i++) {
+                    for (int j = 0; j < Main.vertices; j++) {
+                        //if its a zero, there is no edge connecting the corresponding vertices
+                        if (matrix[i][j] == 0) {
+                        } //if it's not a zero, there is an edge. 
+                        else {
+                            //put the egge weight, source vertice, and destination vertices in the graph
+                            graph.allEdges[edgePos].weight = matrix[i][j];
+                            graph.allEdges[edgePos].source = i + 1;
+                            graph.allEdges[edgePos].dest = j + 1;
+
+                            edgePos++;
+                        }
+                    }
+                }
+                //sort the graph.edge array for the MST
+                Arrays.sort(graph.allEdges);
+
+                //generate the MST
+                graph.findMST();
+            }
+
+            //Function to find the node with the smallest key 
+            public static int lowestCost(boolean outside[], int weight[]) {
+                int inf = Integer.MAX_VALUE;
+                int smallest = -1;
+                for (int i = 0; i < matrix.length; i++) {
+                    if (weight[i] < inf && outside[i] == false) {
+                        inf = weight[i];
+                        smallest = i;
+                    }
+                }
+                return smallest;
+            }
+            
+            public static void floyd(int graph[][])
+            {
+                System.out.println("");
+                System.out.println("Floyd's Algorithm------------- ");  
+                int table[][] = new int[vertices][vertices];           //he wants all values to be infinity????
+                int i, j, k;
+                for (i = 0; i < vertices; i++)                      // start copy graph to the new table
+                {
+                    for (j = 0; j < vertices; j++)
+                    {
+                        table[i][j] = graph[i][j];
+                    }
+                }                                                   // end copy graph to the new table
+                for (k = 0; k < vertices; k++)                              // starting loop through the table
+                {
+                    for (i = 0; i < vertices; i++)
+                    {
+                        for (j = 0; j < vertices; j++)
+                        {
+                            if (table[i][k] + table[k][j] < table[i][j])        // check if distance is smaller    
+                            {
+                                table[i][j] = table[i][k] + table[k][j];        // change it if distance is smaller
+                                System.out.println("");                         // start printing method
+                                System.out.println("Printing:");
+                                for (int a=0; a<vertices; ++a)
+                                {
+                                    for (int b=0; b<vertices; ++b)
+                                    {
+                                        if (table[a][b]==INF)
+                                        {
+                                            System.out.print("INF ");
+                                        }
+                                        else
+                                        {
+                                            System.out.print(table[a][b]+"   ");
+                                        }
+                                    }
+                                    System.out.println();
+                                }
+                                System.out.println("");                         // end printing method
+                            }
+                        }
+                    }                                                       // ending loop through the table
+                }
+            }
+        </blockquote>
+    </div>
+    <h3>Prim's Algorithm</h3>
     <h3>3</h3>
     <h3>4</h3>
     <h3>5</h3>
